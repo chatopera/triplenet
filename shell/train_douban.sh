@@ -1,10 +1,11 @@
-#!bin/bash
+#!/bin/bash
 date
-export CUDA_VISIBLE_DEVICES=2,3
+export CUDA_VISIBLE_DEVICES=0
 python main.py \
     --use_CuDNNRNN \
     --train_douban \
     --use_word_embeddings \
+    --gpu_nums 1 \
     --max_utterance_len  30 \
     --train_batch_size 200 \
     --max_utterance_num  10 \
@@ -15,5 +16,5 @@ python main.py \
     --test_file './data/douban/test.txt' \
     --word_vocab_file './data/douban/douban_vocab' \
     --stopword_file './data/douban/stopwords.txt' \
-    --train_file './data/douban/train_shuf.txt'
+    --train_file './data/douban/train.txt'
 date

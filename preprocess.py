@@ -78,7 +78,7 @@ def load_word_embeddings(config, fname, word2id_dict):
         if embedding_vector is not None:
             count += 1
             embeddings_matrix[word_id] = embedding_vector
-    print(f'Loading {count} words in embeddings file')
+    print('Loading %s words in embeddings file' % count)
     return embeddings_matrix
 
 

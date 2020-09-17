@@ -24,8 +24,7 @@ def evaluate_ubuntu(config, model, test_size=500000):
             acc_right_num += 1
         acc_all_num += 1
 
-    print(f"acc evaluate acc_right_num: {acc_right_num}\tacc_all_num: {acc_all_num}\tacc: "
-          f"{acc_right_num * 1.0 / acc_all_num}")
+    print("acc evaluate acc_right_num: %s\tacc_all_num: %s\tacc: %s" % (acc_right_num, acc_all_num, acc_right_num * 1.0 / acc_all_num))
 
     recall_ten_at_one = recall_ten_at_two = recall_ten_at_fiv = recall_two_at_one = sample_all_num = 0
     for example_id in prediction_dict:
@@ -57,8 +56,7 @@ def evaluate_ubuntu(config, model, test_size=500000):
     recall_ten_at_two = recall_ten_at_two * 1.0 / sample_all_num
     recall_ten_at_fiv = recall_ten_at_fiv * 1.0 / sample_all_num
 
-    print(f"rank evaluate sample_all_num: {sample_all_num}\trecall_two_at_one: {recall_two_at_one}\trecall_ten_at_one: {recall_ten_at_one}\t" \
-          f"recall_ten_at_two: {recall_ten_at_two}\trecall_ten_at_fiv: {recall_ten_at_fiv}")
+    print("rank evaluate sample_all_num: %s\trecall_two_at_one: %s\trecall_ten_at_one: %s\trecall_ten_at_two: %s\trecall_ten_at_fiv: %s" % (sample_all_num, recall_two_at_one, recall_ten_at_one, recall_ten_at_two, recall_ten_at_fiv))
 
     return recall_ten_at_one
 
@@ -101,7 +99,7 @@ def evaluate_douban(config, model, test_size=10000):
         else:
             filtered_prediction_dict[example_id] = temp_list
 
-    print(f'there are {del_num} example have been delete')
+    print('there are %s example have been delete' % del_num)
 
     # now calculate each metrics
     mrr_list = []
@@ -158,6 +156,6 @@ def evaluate_douban(config, model, test_size=10000):
     R10_2 = recall_2 / example_count
     R10_5 = recall_5 / example_count
 
-    print(f'rank evaluate total:{example_count}\tMRR:{MRR}\tMAP:{MAP}\tP1:{P1}\tR10@1:{R10_1}\tR10@2:{R10_2}\tR10@5:{R10_5}')
+    #print(f'rank evaluate total:{example_count}\tMRR:{MRR}\tMAP:{MAP}\tP1:{P1}\tR10@1:{R10_1}\tR10@2:{R10_2}\tR10@5:{R10_5}')
     return MRR
 
